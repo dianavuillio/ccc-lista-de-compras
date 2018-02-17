@@ -52,18 +52,40 @@ $('#list').append( "<li class='list-group-item'>" + shopping[ indice ]+
 }
 
 $(document).ready(function(){
+$('#list').delegate('li','mouseenter',function( event ){
+  event.preventDefault();
+  var indice = $(this).parent().index();
+  $(this).addClass('resaltado');
+  //alert( indice );
+})
+$('#list').delegate('li','mouseleave',function( event ){
+  event.preventDefault();
+  var indice = $(this).parent().index();
+  $(this).removeClass('resaltado');
+  //alert( indice );
+})
+
 $('#list').delegate('button.eliminar','mouseenter',function( event ){
   event.preventDefault();
   var indice = $(this).parent().index();
-  $(this).parent().addClass('resaltado');
+  $(this).parent().addClass('bg-warning');
   //alert( indice );
 })
 $('#list').delegate('button.eliminar','mouseleave',function( event ){
   event.preventDefault();
   var indice = $(this).parent().index();
-  $(this).parent().removeClass('resaltado');
+  $(this).parent().removeClass('bg-warning');
   //alert( indice );
 })
+
+$('#list').delegate('button.eliminar','click',function( event ){
+  event.preventDefault();
+  var indice = $(this).parent().index();
+  shipping = shopping.slice( indice, 1 );
+  renderizaLista();
+  //alert( indice );
+})
+
 })
 
 document.getElementById('agregar').addEventListener('click', escribeLista);
