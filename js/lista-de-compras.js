@@ -33,10 +33,14 @@ document.getElementById('list').innerHTML = "";
 
 
   // ESCRIBIR EN LA Lista
-document.getElementById('list').innerHTML =
-        document.getElementById('list').innerHTML + "<li>" + shopping[ indice ]+ "</li>"
+//document.getElementById('list').innerHTML =
+        //document.getElementById('list').innerHTML + "<li>" + shopping[ indice ]+ "</li>";
 
-
+//$('#list').append( "<li>" + shopping[ indice ]+ "</li>");
+var li = document.createElement('li');
+var text = document.createTextNode(shopping[indice]);
+li.appendChild(text);
+document.getElementById('list').appendChilid( li );
   indice++;
   }
 }
